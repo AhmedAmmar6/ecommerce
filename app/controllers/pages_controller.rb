@@ -6,4 +6,7 @@ class PagesController < ApplicationController
   def view
     @purchases = Purchase.where(user_id: current_user.id)
   end
+
+  def role
+  end
 end

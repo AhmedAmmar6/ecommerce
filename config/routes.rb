@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
 end
   get 'myproducts', to: 'pages#view'
+  get 'role', to: 'pages#role'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
