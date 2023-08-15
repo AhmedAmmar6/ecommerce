@@ -1,4 +1,6 @@
-
+<%
+=begin%>
+ 
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-10 mt-5">
@@ -19,7 +21,7 @@
               <div class="card-text"><p>Price: <%= number_to_currency(@product.price, unit: "Rs ", separator: ".", delimiter: ",", format: "%u%n") %></p></div>
               <div class="card-text"><p>Description: <%= simple_format(@product.description) %></p></div>
               <div class="card-text"><p>Total Items: <%= @product.item_count %></p></div>
-              <% if current_user.role == "Buyer"%>
+              <% if current_user && current_user.role == "Buyer" %>
                 <%= button_to "Buy now", buy_store_product_path(@product), method: :post, class: "btn btn-warning" %>
               <% end %>  
             </div>
@@ -32,16 +34,17 @@
     </div>
   </div>
   <div class="text-center mt-4">
-    <% if current_user.role == "Buyer"%>
+    <% if current_user && current_user.role == "Buyer" %>
       <%= button_to 'Return to Products', root_path, method: :get, class: "btn btn-warning"%>
     <% end %> 
   </div>
-</div><br/>
-
-
+</div><br/> 
 <%
-=begin%>
- <div class="container">
+=end%>
+
+
+
+ <div class="container", id="product-container">
   <div class="product-content product-wrap clearfix product-deatil">
     <div class="row">
       <div class="col-md-5 col-sm-12 col-xs-12">
@@ -53,8 +56,43 @@
           <% end %>
         </div>
       </div>
+      <div class="col-md-6 col-md-offset-1 col-sm-12 col-xs-12">
+        <h2 class="name">
+        <%= @product.title.titleize %><br/>
+        <small>Product by </small><%= @product.store.name %>
+        </h2>
+        <hr />
+        <h3 class="price-container">
+          <%= number_to_currency(@product.price, unit: "Rs ", separator: ".", delimiter: ",", format: "%u%n") %>
+        <small>*includes tax</small>
+        </h3>
+        <hr />
+        <div id="more-information">
+          <br />
+            <strong>Description:</strong>
+              <p>
+              <%= simple_format(@product.description) %>
+              </p>
+              <strong>Total Items: </strong><%= @product.item_count %><br/>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-6 text-right">
+              <% if current_user && current_user.role == "Buyer" %>
+              <div class="text-left">
+                <%= button_to "Buy now", buy_store_product_path(@product), method: :post, class: "btn btn-warning" %>
+              </div>  
+              <% end %>
+          </div>
+        </div>
+      </div>
     </div>
+    <hr/>
+  </div>
+    <div class="text-center mt-4">
+    <% if current_user && current_user.role == "Buyer" %>
+      <%= button_to 'Return to Products', root_path, method: :get, class: "btn btn-warning"%>
+    <% end %> 
   </div>
 </div> 
-<%
-=end%>
+

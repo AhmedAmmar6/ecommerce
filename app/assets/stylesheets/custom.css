@@ -31,3 +31,9 @@ body {
     padding-top: 20px;
     /* padding-bottom: 40px; */
   }
+
+#product-container{
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+}
