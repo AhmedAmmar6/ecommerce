@@ -1,0 +1,60 @@
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-10 mt-5">
+      <div class="card text-center">
+        <div class="row">
+          <div class="col-md-4"> <!-- Column for the image -->
+            <% if @product.image.attached? %>
+              <div style="display: flex; justify-content: center; align-items: center; margin: 30px">
+                <%= image_tag @product.image, style: "width: 250px; height: auto; display: block;", class: "img-fluid img-thumbnail" %>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-md-8"> <!-- Column for product details -->
+            <div class="card-header font-italic">
+              by <%= @product.store.name %>
+            </div>
+            <div class="card-body"> <!-- Apply 'text-left' class here -->
+              <div class="card-text"><p>Price: <%= number_to_currency(@product.price, unit: "Rs ", separator: ".", delimiter: ",", format: "%u%n") %></p></div>
+              <div class="card-text"><p>Description: <%= simple_format(@product.description) %></p></div>
+              <div class="card-text"><p>Total Items: <%= @product.item_count %></p></div>
+              <% if current_user.role == "Buyer"%>
+                <%= button_to "Buy now", buy_store_product_path(@product), method: :post, class: "btn btn-warning" %>
+              <% end %>  
+            </div>
+            <div class="card-footer text-muted">
+              <small>Created <%= time_ago_in_words(@product.created_at) %> ago, edited <%= time_ago_in_words(@product.updated_at) %> ago</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mt-4">
+    <% if current_user.role == "Buyer"%>
+      <%= button_to 'Return to Products', root_path, method: :get, class: "btn btn-warning"%>
+    <% end %> 
+  </div>
+</div><br/>
+
+
+<%
+=begin%>
+ <div class="container">
+  <div class="product-content product-wrap clearfix product-deatil">
+    <div class="row">
+      <div class="col-md-5 col-sm-12 col-xs-12">
+        <div class="product-image">
+          <% if @product.image.attached? %>
+            <div style="display: flex; justify-content: center; align-items: center; margin: 30px">
+              <%= image_tag @product.image, style: "width: 250px; height: auto; display: block;", class: "img-fluid img-thumbnail" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+<%
+=end%>

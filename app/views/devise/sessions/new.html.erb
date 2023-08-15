@@ -1,0 +1,56 @@
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+        <p></p>
+        <h2 class="text-center">Sign into your Account</h2><br/>
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "loginName" %>
+              <%= f.label :email, class:"form-label"%><br />
+            </div>
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+              <%= f.password_field :password, autocomplete: "current-password", class: "form-control", id: "loginPassword" %>
+              <%= f.label :password, class:"form-label" %><br />
+            </div>
+            <!-- 2 column grid layout -->
+            <div class="row mb-4">
+              <div class="col-md-6 d-flex justify-content-center">
+                <!-- Checkbox -->
+                <div class="form-check mb-3 mb-md-0">
+                  <%= f.check_box :remember_me, class: "form-check-input", id: "loginCheck" %>
+                  <%= f.label :remember_me, class:"form-check-label",  for:"loginCheck"%>
+                </div>
+              </div>
+              <div class="col-md-6 d-flex justify-content-center">
+                <!-- Simple link -->
+                <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+              </div>
+            </div>
+            <!-- Submit button -->
+            <div class="d-flex justify-content-center actions"> <!-- Center the button -->
+              <%= f.submit "Log in", class: "btn btn-warning btn-block" %>
+            </div><br/>
+
+            <!-- Register buttons -->
+            <div class="text-center">
+              <p>Not a member? <%= link_to "Sign up", new_registration_path(resource_name) %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+        
+
+

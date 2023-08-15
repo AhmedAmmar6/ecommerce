@@ -1,0 +1,38 @@
+<% if flash[:error].present? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <h4 class="alert-heading">The following errors prevented the article from being saved!</h4>
+        <%= flash[:error] %>
+    </div>
+<% end %>
+
+<div class="Container">
+  <div class="row justify-content-center">
+  <div class="col-4 mt-4">
+    <%= form_for @product, url: store_products_path, method: :post do |f| %>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div><br/>
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description, class: 'form-control' %>
+      </div><br/>
+      <div class="form-group">
+        <%= f.label :price %>
+        <%= f.text_field :price, class: 'form-control' %>
+      </div><br/>
+      <div class="form-group">
+        <%= f.label :item_count %>
+        <%= f.text_field :item_count, class: 'form-control' %>
+      </div><br/>
+      <div class="form-group">
+        <%= f.label :image %>
+        <%= f.file_field :image, class:"form-control shadow round", placeholder:"Chose file to attach"%>
+      </div><br/>
+      <div class="justify-content-center">
+      <%= f.submit "Add Product", class: "btn btn-warning" %>
+      </div>
+    <% end %>
+  </div>
+  </div>
+</div><br/>

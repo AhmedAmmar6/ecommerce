@@ -1,0 +1,33 @@
+.navbar {
+    background-color: black !important;
+  }
+
+.nav-link {
+    color: white !important;
+  }
+  
+.navbar-brand {
+    font-size: 24px !important;
+  }  
+
+#logo{
+    float: left;
+    font-size: 1.7em;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: bold;
+}  
+
+html,
+body {
+  height: 100%;
+}
+
+#page-content {
+    flex-shrink: 0;
+    flex: 1 0 auto;
+    background-color: lightgray;
+    padding-top: 20px;
+    /* padding-bottom: 40px; */
+  }

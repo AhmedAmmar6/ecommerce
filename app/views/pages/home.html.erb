@@ -1,0 +1,28 @@
+<div class="container-lg mt-4">
+
+<%= render 'layouts/carousel'%>
+
+
+<h1 class="text-center mt-4">Listing All Products</h1>
+
+<div class="container-lg mt-5">
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-md-4 mb-4"> <!-- Add 'mb-4' class to create space between columns -->
+        <div class="card" style="width: 22rem;">
+          <% if product.image.attached? %>
+            <div style="display: flex; justify-content: center; align-items: center; margin: 30px">
+              <%= image_tag product.image, style: "width: 250px; height: 250px;", class: "img-fluid img-thumbnail card-img-top" %>
+            </div>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= product.title.titleize %></h5>
+            <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%= product.description %></p>
+            <%= link_to "View Product", store_product_path(product.store, product), class:"btn btn btn-warning"%>
+
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="Container">
+    <div class="row justify-content-center">
+        <div class="col-10 mt-4">
+            <%= form_for @article, html: { class: "shadow p-3 mb-3 bg-success rounded" } do |f| %>
+                    <div class="form-group row">
+                    <%= f.label :title, class: "col-sm-2 col-form-label text-light"%>
+                        <div class="col-10">
+                        <%= f.text_field :title, class:"form-control shadow round", placeholder: "Title of article"%>
+                        </div>
+                    </div>
+                    <p></p>
+                    <div class="form-group row">
+                    <%= f.label :description, class: "col-sm-2 col-form-label text-light" %>
+                        <div class="col-10">
+                        <%= f.text_area :description, rows: 10, class:"form-control shadow round", placeholder:"Description of article"%>
+                        </div>
+                    </div>
+                <p></p>    
+                <div class="text-center">
+                <%= f.submit class:"btn btn-outline-light btn-lg" %>
+                </div>
+            <% end %>
+            <p></p>
+            <div class="text-center">
+                <%= link_to 'Return to Articles', articles_path, class: "text-info"%>
+            </div>
+        </div>
+    </div>
+</div>
